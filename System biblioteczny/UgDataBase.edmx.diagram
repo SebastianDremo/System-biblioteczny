@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eec4b6ca89234adda949c63a11d09873" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="durbaezgomezModel.Autorzy" Width="1.5" PointX="1.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.GodzinyPracy" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Kraje" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Ksiazki" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Loginy" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Pracownicy" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.PracownicyDetails" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Urlopy" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Uzytkownicy" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.WejsciaOnline" Width="1.5" PointX="6" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Wypozyczenia" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Zamowienia" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="durbaezgomezModel.Autorzy_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Ksiazki_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.GodzinyPracy_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.GodzinyPracy_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Ksiazki_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Wypozyczenia_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Zamowienia_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Loginy_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.PracownicyDetails_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Urlopy_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Wypozyczenia_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Zamowienia_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.WejsciaOnline_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Wypozyczenia_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="durbaezgomezModel.Zamowienia_fk1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

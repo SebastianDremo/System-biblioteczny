@@ -1,0 +1,21 @@
+﻿@model Loginy
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Login</h1>
+
+@using(Html.BeginForm("Index", "Login"))
+{
+<div class="form-group">
+    <label>Nr karty</label>
+    @Html.TextBoxFor(m => m.nr_karty, new { @class = "form-control" })
+
+    <label>Haslo</label>
+    @Html.TextBoxFor(m => m.haslo, new { @class = "form-control" })
+</div>
+<button type="submit" class="btn btn-primary">OK</button>
+}
+

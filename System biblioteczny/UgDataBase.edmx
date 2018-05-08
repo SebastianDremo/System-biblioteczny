@@ -1,0 +1,936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="durbaezgomezModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autorzy">
+          <Key>
+            <PropertyRef Name="autor_id" />
+          </Key>
+          <Property Name="autor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kraj_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GodzinyPracy">
+          <Key>
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="pracownik_id" Type="int" Nullable="false" />
+          <Property Name="pracownik_id2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kraje">
+          <Key>
+            <PropertyRef Name="kraj_id" />
+          </Key>
+          <Property Name="kraj_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ksiazki">
+          <Key>
+            <PropertyRef Name="ksiazka_id" />
+          </Key>
+          <Property Name="ksiazka_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tytul" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="tytul2" Type="varchar" MaxLength="300" />
+          <Property Name="rok_wydania" Type="int" Nullable="false" />
+          <Property Name="autor_id" Type="int" Nullable="false" />
+          <Property Name="wydawnictwo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kraj_id" Type="int" Nullable="false" />
+          <Property Name="jezyk" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="numer_wydania" Type="int" Nullable="false" />
+          <Property Name="stawka" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loginy">
+          <Key>
+            <PropertyRef Name="nr_karty" />
+          </Key>
+          <Property Name="nr_karty" Type="int" Nullable="false" />
+          <Property Name="haslo" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="pracownik_id" />
+          </Key>
+          <Property Name="pracownik_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracownicyDetails">
+          <Key>
+            <PropertyRef Name="pracownik_id" />
+          </Key>
+          <Property Name="pracownik_id" Type="int" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="miasto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kod_poczt" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="telefon" Type="int" Nullable="false" />
+          <Property Name="adres_mail" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Urlopy">
+          <Key>
+            <PropertyRef Name="urlop_id" />
+          </Key>
+          <Property Name="urlop_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pracownik_id" Type="int" Nullable="false" />
+          <Property Name="od_kiedy" Type="date" Nullable="false" />
+          <Property Name="do_kiedy" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="nr_karty" />
+          </Key>
+          <Property Name="nr_karty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="od_kiedy" Type="date" Nullable="false" />
+          <Property Name="telefon" Type="int" Nullable="false" />
+          <Property Name="adres_mail" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WejsciaOnline">
+          <Key>
+            <PropertyRef Name="wejscie_id" />
+          </Key>
+          <Property Name="wejscie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+          <Property Name="nr_karty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wypozyczenia">
+          <Key>
+            <PropertyRef Name="wypo_id" />
+          </Key>
+          <Property Name="wypo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ksiazka_id" Type="int" Nullable="false" />
+          <Property Name="nr_karty" Type="int" Nullable="false" />
+          <Property Name="od_kiedy" Type="date" Nullable="false" />
+          <Property Name="do_kiedy" Type="date" Nullable="false" />
+          <Property Name="data_zwrotu" Type="date" />
+          <Property Name="pracownik_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zamowienia">
+          <Key>
+            <PropertyRef Name="zamowienie_id" />
+          </Key>
+          <Property Name="zamowienie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="pracownik_id" Type="int" Nullable="false" />
+          <Property Name="nr_karty" Type="int" Nullable="false" />
+          <Property Name="ksiazka_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Autorzy_fk0">
+          <End Role="Kraje" Type="Self.Kraje" Multiplicity="1" />
+          <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraje">
+              <PropertyRef Name="kraj_id" />
+            </Principal>
+            <Dependent Role="Autorzy">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GodzinyPracy_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="GodzinyPracy" Type="Self.GodzinyPracy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="GodzinyPracy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GodzinyPracy_fk1">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="GodzinyPracy" Type="Self.GodzinyPracy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="GodzinyPracy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ksiazki_fk0">
+          <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="1" />
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autorzy">
+              <PropertyRef Name="autor_id" />
+            </Principal>
+            <Dependent Role="Ksiazki">
+              <PropertyRef Name="autor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ksiazki_fk1">
+          <End Role="Kraje" Type="Self.Kraje" Multiplicity="1" />
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraje">
+              <PropertyRef Name="kraj_id" />
+            </Principal>
+            <Dependent Role="Ksiazki">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Loginy_fk0">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Loginy" Type="Self.Loginy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Loginy">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PracownicyDetails_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="PracownicyDetails" Type="Self.PracownicyDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="PracownicyDetails">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Urlopy_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Urlopy" Type="Self.Urlopy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Urlopy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WejsciaOnline_fk0">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="WejsciaOnline" Type="Self.WejsciaOnline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="WejsciaOnline">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk0">
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="ksiazka_id" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="ksiazka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk1">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk2">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk1">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk2">
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="ksiazka_id" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="ksiazka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="durbaezgomezModelStoreContainer">
+          <EntitySet Name="Autorzy" EntityType="Self.Autorzy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GodzinyPracy" EntityType="Self.GodzinyPracy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kraje" EntityType="Self.Kraje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loginy" EntityType="Self.Loginy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracownicyDetails" EntityType="Self.PracownicyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urlopy" EntityType="Self.Urlopy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WejsciaOnline" EntityType="Self.WejsciaOnline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zamowienia" EntityType="Self.Zamowienia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Autorzy_fk0" Association="Self.Autorzy_fk0">
+            <End Role="Kraje" EntitySet="Kraje" />
+            <End Role="Autorzy" EntitySet="Autorzy" />
+          </AssociationSet>
+          <AssociationSet Name="GodzinyPracy_fk0" Association="Self.GodzinyPracy_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="GodzinyPracy" EntitySet="GodzinyPracy" />
+          </AssociationSet>
+          <AssociationSet Name="GodzinyPracy_fk1" Association="Self.GodzinyPracy_fk1">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="GodzinyPracy" EntitySet="GodzinyPracy" />
+          </AssociationSet>
+          <AssociationSet Name="Ksiazki_fk0" Association="Self.Ksiazki_fk0">
+            <End Role="Autorzy" EntitySet="Autorzy" />
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+          </AssociationSet>
+          <AssociationSet Name="Ksiazki_fk1" Association="Self.Ksiazki_fk1">
+            <End Role="Kraje" EntitySet="Kraje" />
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+          </AssociationSet>
+          <AssociationSet Name="Loginy_fk0" Association="Self.Loginy_fk0">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Loginy" EntitySet="Loginy" />
+          </AssociationSet>
+          <AssociationSet Name="PracownicyDetails_fk0" Association="Self.PracownicyDetails_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="PracownicyDetails" EntitySet="PracownicyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="Urlopy_fk0" Association="Self.Urlopy_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Urlopy" EntitySet="Urlopy" />
+          </AssociationSet>
+          <AssociationSet Name="WejsciaOnline_fk0" Association="Self.WejsciaOnline_fk0">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="WejsciaOnline" EntitySet="WejsciaOnline" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk0" Association="Self.Wypozyczenia_fk0">
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk1" Association="Self.Wypozyczenia_fk1">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk2" Association="Self.Wypozyczenia_fk2">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk0" Association="Self.Zamowienia_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk1" Association="Self.Zamowienia_fk1">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk2" Association="Self.Zamowienia_fk2">
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="durbaezgomezModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autorzy">
+          <Key>
+            <PropertyRef Name="autor_id" />
+          </Key>
+          <Property Name="autor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kraj_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kraje" Relationship="Self.Autorzy_fk0" FromRole="Autorzy" ToRole="Kraje" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.Ksiazki_fk0" FromRole="Autorzy" ToRole="Ksiazki" />
+        </EntityType>
+        <EntityType Name="GodzinyPracy">
+          <Key>
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <Property Name="pracownik_id2" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.GodzinyPracy_fk0" FromRole="GodzinyPracy" ToRole="Pracownicy" />
+          <NavigationProperty Name="Pracownicy1" Relationship="Self.GodzinyPracy_fk1" FromRole="GodzinyPracy" ToRole="Pracownicy" />
+        </EntityType>
+        <EntityType Name="Kraje">
+          <Key>
+            <PropertyRef Name="kraj_id" />
+          </Key>
+          <Property Name="kraj_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Autorzy" Relationship="Self.Autorzy_fk0" FromRole="Kraje" ToRole="Autorzy" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.Ksiazki_fk1" FromRole="Kraje" ToRole="Ksiazki" />
+        </EntityType>
+        <EntityType Name="Ksiazki">
+          <Key>
+            <PropertyRef Name="ksiazka_id" />
+          </Key>
+          <Property Name="ksiazka_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tytul" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tytul2" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="rok_wydania" Type="Int32" Nullable="false" />
+          <Property Name="autor_id" Type="Int32" Nullable="false" />
+          <Property Name="wydawnictwo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kraj_id" Type="Int32" Nullable="false" />
+          <Property Name="jezyk" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numer_wydania" Type="Int32" Nullable="false" />
+          <Property Name="stawka" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Autorzy" Relationship="Self.Ksiazki_fk0" FromRole="Ksiazki" ToRole="Autorzy" />
+          <NavigationProperty Name="Kraje" Relationship="Self.Ksiazki_fk1" FromRole="Ksiazki" ToRole="Kraje" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk0" FromRole="Ksiazki" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Zamowienia" Relationship="Self.Zamowienia_fk2" FromRole="Ksiazki" ToRole="Zamowienia" />
+        </EntityType>
+        <EntityType Name="Loginy">
+          <Key>
+            <PropertyRef Name="nr_karty" />
+          </Key>
+          <Property Name="nr_karty" Type="Int32" Nullable="false" />
+          <Property Name="haslo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.Loginy_fk0" FromRole="Loginy" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="pracownik_id" />
+          </Key>
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GodzinyPracy" Relationship="Self.GodzinyPracy_fk0" FromRole="Pracownicy" ToRole="GodzinyPracy" />
+          <NavigationProperty Name="GodzinyPracy1" Relationship="Self.GodzinyPracy_fk1" FromRole="Pracownicy" ToRole="GodzinyPracy" />
+          <NavigationProperty Name="PracownicyDetails" Relationship="Self.PracownicyDetails_fk0" FromRole="Pracownicy" ToRole="PracownicyDetails" />
+          <NavigationProperty Name="Urlopy" Relationship="Self.Urlopy_fk0" FromRole="Pracownicy" ToRole="Urlopy" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk2" FromRole="Pracownicy" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Zamowienia" Relationship="Self.Zamowienia_fk0" FromRole="Pracownicy" ToRole="Zamowienia" />
+        </EntityType>
+        <EntityType Name="PracownicyDetails">
+          <Key>
+            <PropertyRef Name="pracownik_id" />
+          </Key>
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <Property Name="ulica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="miasto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kod_poczt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="Int32" Nullable="false" />
+          <Property Name="adres_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.PracownicyDetails_fk0" FromRole="PracownicyDetails" ToRole="Pracownicy" />
+        </EntityType>
+        <EntityType Name="Urlopy">
+          <Key>
+            <PropertyRef Name="urlop_id" />
+          </Key>
+          <Property Name="urlop_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <Property Name="od_kiedy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="do_kiedy" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.Urlopy_fk0" FromRole="Urlopy" ToRole="Pracownicy" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="nr_karty" />
+          </Key>
+          <Property Name="nr_karty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="od_kiedy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="telefon" Type="Int32" Nullable="false" />
+          <Property Name="adres_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Loginy" Relationship="Self.Loginy_fk0" FromRole="Uzytkownicy" ToRole="Loginy" />
+          <NavigationProperty Name="WejsciaOnline" Relationship="Self.WejsciaOnline_fk0" FromRole="Uzytkownicy" ToRole="WejsciaOnline" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk1" FromRole="Uzytkownicy" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Zamowienia" Relationship="Self.Zamowienia_fk1" FromRole="Uzytkownicy" ToRole="Zamowienia" />
+        </EntityType>
+        <EntityType Name="WejsciaOnline">
+          <Key>
+            <PropertyRef Name="wejscie_id" />
+          </Key>
+          <Property Name="wejscie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nr_karty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.WejsciaOnline_fk0" FromRole="WejsciaOnline" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Wypozyczenia">
+          <Key>
+            <PropertyRef Name="wypo_id" />
+          </Key>
+          <Property Name="wypo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ksiazka_id" Type="Int32" Nullable="false" />
+          <Property Name="nr_karty" Type="Int32" Nullable="false" />
+          <Property Name="od_kiedy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="do_kiedy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_zwrotu" Type="DateTime" Precision="0" />
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.Wypozyczenia_fk0" FromRole="Wypozyczenia" ToRole="Ksiazki" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.Wypozyczenia_fk2" FromRole="Wypozyczenia" ToRole="Pracownicy" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.Wypozyczenia_fk1" FromRole="Wypozyczenia" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Zamowienia">
+          <Key>
+            <PropertyRef Name="zamowienie_id" />
+          </Key>
+          <Property Name="zamowienie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <Property Name="nr_karty" Type="Int32" Nullable="false" />
+          <Property Name="ksiazka_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.Zamowienia_fk2" FromRole="Zamowienia" ToRole="Ksiazki" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.Zamowienia_fk0" FromRole="Zamowienia" ToRole="Pracownicy" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.Zamowienia_fk1" FromRole="Zamowienia" ToRole="Uzytkownicy" />
+        </EntityType>
+        <Association Name="Autorzy_fk0">
+          <End Role="Kraje" Type="Self.Kraje" Multiplicity="1" />
+          <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraje">
+              <PropertyRef Name="kraj_id" />
+            </Principal>
+            <Dependent Role="Autorzy">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ksiazki_fk0">
+          <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="1" />
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autorzy">
+              <PropertyRef Name="autor_id" />
+            </Principal>
+            <Dependent Role="Ksiazki">
+              <PropertyRef Name="autor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GodzinyPracy_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="GodzinyPracy" Type="Self.GodzinyPracy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="GodzinyPracy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GodzinyPracy_fk1">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="GodzinyPracy" Type="Self.GodzinyPracy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="GodzinyPracy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ksiazki_fk1">
+          <End Role="Kraje" Type="Self.Kraje" Multiplicity="1" />
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraje">
+              <PropertyRef Name="kraj_id" />
+            </Principal>
+            <Dependent Role="Ksiazki">
+              <PropertyRef Name="kraj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk0">
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="ksiazka_id" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="ksiazka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk2">
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="ksiazka_id" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="ksiazka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Loginy_fk0">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Loginy" Type="Self.Loginy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Loginy">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PracownicyDetails_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="PracownicyDetails" Type="Self.PracownicyDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="PracownicyDetails">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Urlopy_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Urlopy" Type="Self.Urlopy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Urlopy">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk2">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk0">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="pracownik_id" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="pracownik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WejsciaOnline_fk0">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="WejsciaOnline" Type="Self.WejsciaOnline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="WejsciaOnline">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Wypozyczenia_fk1">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Wypozyczenia">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Zamowienia_fk1">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="nr_karty" />
+            </Principal>
+            <Dependent Role="Zamowienia">
+              <PropertyRef Name="nr_karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="durbaezgomezEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autorzy" EntityType="Self.Autorzy" />
+          <EntitySet Name="GodzinyPracy" EntityType="Self.GodzinyPracy" />
+          <EntitySet Name="Kraje" EntityType="Self.Kraje" />
+          <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" />
+          <EntitySet Name="Loginy" EntityType="Self.Loginy" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+          <EntitySet Name="PracownicyDetails" EntityType="Self.PracownicyDetails" />
+          <EntitySet Name="Urlopy" EntityType="Self.Urlopy" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+          <EntitySet Name="WejsciaOnline" EntityType="Self.WejsciaOnline" />
+          <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" />
+          <EntitySet Name="Zamowienia" EntityType="Self.Zamowienia" />
+          <AssociationSet Name="Autorzy_fk0" Association="Self.Autorzy_fk0">
+            <End Role="Kraje" EntitySet="Kraje" />
+            <End Role="Autorzy" EntitySet="Autorzy" />
+          </AssociationSet>
+          <AssociationSet Name="Ksiazki_fk0" Association="Self.Ksiazki_fk0">
+            <End Role="Autorzy" EntitySet="Autorzy" />
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+          </AssociationSet>
+          <AssociationSet Name="GodzinyPracy_fk0" Association="Self.GodzinyPracy_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="GodzinyPracy" EntitySet="GodzinyPracy" />
+          </AssociationSet>
+          <AssociationSet Name="GodzinyPracy_fk1" Association="Self.GodzinyPracy_fk1">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="GodzinyPracy" EntitySet="GodzinyPracy" />
+          </AssociationSet>
+          <AssociationSet Name="Ksiazki_fk1" Association="Self.Ksiazki_fk1">
+            <End Role="Kraje" EntitySet="Kraje" />
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk0" Association="Self.Wypozyczenia_fk0">
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk2" Association="Self.Zamowienia_fk2">
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+          <AssociationSet Name="Loginy_fk0" Association="Self.Loginy_fk0">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Loginy" EntitySet="Loginy" />
+          </AssociationSet>
+          <AssociationSet Name="PracownicyDetails_fk0" Association="Self.PracownicyDetails_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="PracownicyDetails" EntitySet="PracownicyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="Urlopy_fk0" Association="Self.Urlopy_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Urlopy" EntitySet="Urlopy" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk2" Association="Self.Wypozyczenia_fk2">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk0" Association="Self.Zamowienia_fk0">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+          <AssociationSet Name="WejsciaOnline_fk0" Association="Self.WejsciaOnline_fk0">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="WejsciaOnline" EntitySet="WejsciaOnline" />
+          </AssociationSet>
+          <AssociationSet Name="Wypozyczenia_fk1" Association="Self.Wypozyczenia_fk1">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="Zamowienia_fk1" Association="Self.Zamowienia_fk1">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Zamowienia" EntitySet="Zamowienia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="durbaezgomezModelStoreContainer" CdmEntityContainer="durbaezgomezEntities1">
+          <EntitySetMapping Name="Autorzy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Autorzy">
+              <MappingFragment StoreEntitySet="Autorzy">
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="kraj_id" ColumnName="kraj_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GodzinyPracy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.GodzinyPracy">
+              <MappingFragment StoreEntitySet="GodzinyPracy">
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+                <ScalarProperty Name="pracownik_id2" ColumnName="pracownik_id2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kraje">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Kraje">
+              <MappingFragment StoreEntitySet="Kraje">
+                <ScalarProperty Name="kraj_id" ColumnName="kraj_id" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ksiazki">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Ksiazki">
+              <MappingFragment StoreEntitySet="Ksiazki">
+                <ScalarProperty Name="ksiazka_id" ColumnName="ksiazka_id" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="tytul2" ColumnName="tytul2" />
+                <ScalarProperty Name="rok_wydania" ColumnName="rok_wydania" />
+                <ScalarProperty Name="autor_id" ColumnName="autor_id" />
+                <ScalarProperty Name="wydawnictwo" ColumnName="wydawnictwo" />
+                <ScalarProperty Name="kraj_id" ColumnName="kraj_id" />
+                <ScalarProperty Name="jezyk" ColumnName="jezyk" />
+                <ScalarProperty Name="numer_wydania" ColumnName="numer_wydania" />
+                <ScalarProperty Name="stawka" ColumnName="stawka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loginy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Loginy">
+              <MappingFragment StoreEntitySet="Loginy">
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+                <ScalarProperty Name="haslo" ColumnName="haslo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownicy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Pracownicy">
+              <MappingFragment StoreEntitySet="Pracownicy">
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracownicyDetails">
+            <EntityTypeMapping TypeName="durbaezgomezModel.PracownicyDetails">
+              <MappingFragment StoreEntitySet="PracownicyDetails">
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="kod_poczt" ColumnName="kod_poczt" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="adres_mail" ColumnName="adres_mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urlopy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Urlopy">
+              <MappingFragment StoreEntitySet="Urlopy">
+                <ScalarProperty Name="urlop_id" ColumnName="urlop_id" />
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+                <ScalarProperty Name="od_kiedy" ColumnName="od_kiedy" />
+                <ScalarProperty Name="do_kiedy" ColumnName="do_kiedy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkownicy">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Uzytkownicy">
+              <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="od_kiedy" ColumnName="od_kiedy" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="adres_mail" ColumnName="adres_mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WejsciaOnline">
+            <EntityTypeMapping TypeName="durbaezgomezModel.WejsciaOnline">
+              <MappingFragment StoreEntitySet="WejsciaOnline">
+                <ScalarProperty Name="wejscie_id" ColumnName="wejscie_id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wypozyczenia">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Wypozyczenia">
+              <MappingFragment StoreEntitySet="Wypozyczenia">
+                <ScalarProperty Name="wypo_id" ColumnName="wypo_id" />
+                <ScalarProperty Name="ksiazka_id" ColumnName="ksiazka_id" />
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+                <ScalarProperty Name="od_kiedy" ColumnName="od_kiedy" />
+                <ScalarProperty Name="do_kiedy" ColumnName="do_kiedy" />
+                <ScalarProperty Name="data_zwrotu" ColumnName="data_zwrotu" />
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zamowienia">
+            <EntityTypeMapping TypeName="durbaezgomezModel.Zamowienia">
+              <MappingFragment StoreEntitySet="Zamowienia">
+                <ScalarProperty Name="zamowienie_id" ColumnName="zamowienie_id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+                <ScalarProperty Name="ksiazka_id" ColumnName="ksiazka_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
