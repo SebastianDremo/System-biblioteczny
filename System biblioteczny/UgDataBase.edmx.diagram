@@ -9,12 +9,12 @@
         <EntityTypeShape EntityType="durbaezgomezModel.GodzinyPracy" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Kraje" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Ksiazki" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="durbaezgomezModel.Loginy" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.Loginy" Width="1.5" PointX="7.625" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Pracownicy" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.PracownicyDetails" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Urlopy" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Uzytkownicy" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="durbaezgomezModel.WejsciaOnline" Width="1.5" PointX="6" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="durbaezgomezModel.WejsciaOnline" Width="1.5" PointX="7.75" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Wypozyczenia" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="durbaezgomezModel.Zamowienia" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="durbaezgomezModel.Autorzy_fk0" ManuallyRouted="false" />

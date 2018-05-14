@@ -21,9 +21,21 @@ namespace System_biblioteczny.Controllers
 
             if (context.Loginy.Any(o => o.nr_karty == login.nr_karty && o.haslo == login.haslo))
             {
+                var time = new WejsciaOnline()
+                {
+                    data = DateTime.Now,
+                    nr_karty = login.nr_karty
+                };
+                context.WejsciaOnline.Add(time);
+                context.SaveChanges();
                 return View("Logged", login);
             }
-            else return View("Error");
+            else if (context.Pracownicy.Any(p => p.pracownik_id == login.nr_karty && p.nazwisko == login.haslo))
+            {
+                return View("AdminView");
+            }
+            else
+                return View("ErrorLogin");
         }
     }
 }
