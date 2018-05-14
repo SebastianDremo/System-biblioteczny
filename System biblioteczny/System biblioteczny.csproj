@@ -263,6 +263,8 @@
     <Content Include="UgDataBase.edmx.diagram">
       <DependentUpon>UgDataBase.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Login\Logged.cshtml" />
+    <Content Include="Views\Login\ErrorLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

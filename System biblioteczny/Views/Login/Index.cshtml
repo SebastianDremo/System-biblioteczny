@@ -7,14 +7,14 @@
 
 <h1>Login</h1>
 
-@using(Html.BeginForm("Index", "Login"))
+@using(Html.BeginForm("CheckForLogin", "Login"))
 {
 <div class="form-group">
     <label>Nr karty</label>
-    @Html.TextBoxFor(m => m.nr_karty, new { @class = "form-control" })
+    @Html.TextBoxFor(model => model.nr_karty, new { @class = "form-control" })
 
     <label>Haslo</label>
-    @Html.TextBoxFor(m => m.haslo, new { @class = "form-control" })
+    @Html.TextBoxFor(model => model.haslo, new { @class = "form-control" })
 </div>
 <button type="submit" class="btn btn-primary">OK</button>
 }
