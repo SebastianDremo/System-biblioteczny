@@ -1,0 +1,17 @@
+﻿@model Uzytkownicy
+@{
+    ViewBag.Title = "ListOfBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.imie @Model.nazwisko</h2>
+
+<h3>Lista ksiazek :</h3>
+
+@{ 
+    var context = new durbaezgomezEntities1();
+    var lista = context.Ksiazki.ToList();
+}
+
+@Html.Partial("~/Views/Shared/BooksPartialView.cshtml", lista);
+

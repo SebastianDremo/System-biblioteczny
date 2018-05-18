@@ -26,9 +26,13 @@ namespace System_biblioteczny.Controllers
                     data = DateTime.Now,
                     nr_karty = login.nr_karty
                 };
+
+                Uzytkownicy user = context.Uzytkownicy.Where(u => u.nr_karty == login.nr_karty).FirstOrDefault();
+
                 context.WejsciaOnline.Add(time);
                 context.SaveChanges();
-                return View("Logged", login);
+
+                return View("Logged", user);
             }
             else if (context.Pracownicy.Any(p => p.pracownik_id == login.nr_karty && p.nazwisko == login.haslo))
             {

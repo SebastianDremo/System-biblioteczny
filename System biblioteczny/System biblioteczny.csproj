@@ -154,6 +154,7 @@
       <DependentUpon>UgDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +266,8 @@
     <Content Include="Views\Login\Logged.cshtml" />
     <Content Include="Views\Login\ErrorLogin.cshtml" />
     <Content Include="Views\Login\AdminView.cshtml" />
+    <Content Include="Views\Rent\ListOfBooks.cshtml" />
+    <Content Include="Views\Shared\BooksPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
