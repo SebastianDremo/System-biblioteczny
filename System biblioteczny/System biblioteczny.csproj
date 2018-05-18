@@ -170,6 +170,7 @@
     <Compile Include="Loginy.cs">
       <DependentUpon>UgDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RentBookViewModel.cs" />
     <Compile Include="Pracownicy.cs">
       <DependentUpon>UgDataBase.tt</DependentUpon>
     </Compile>
@@ -271,7 +272,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
