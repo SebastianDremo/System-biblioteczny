@@ -8,8 +8,7 @@
 
 <h4>@Model.nr_karty</h4>
 
-@using (Html.BeginForm("RentBook", "Rent"))
+@using (Html.BeginForm("ListOfBooks", "Rent", new { card = Model.nr_karty}))
 {
     <button type="submit" class="btn btn-primary">Wypozycz ksiazke</button>
-}
-
+}   

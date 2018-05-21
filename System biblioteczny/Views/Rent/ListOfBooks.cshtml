@@ -1,11 +1,50 @@
 ﻿@model System_biblioteczny.Models.RentBookViewModel
 @{
-    ViewBag.Title = "ListOfBooks";
+    ViewBag.Title = "Wypozycz ksiazke";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Lista dostepnych ksiazek w bazie</h2>
 
 
-@Html.Partial("~/Views/Shared/BooksPartialView.cshtml", Model.Books)
 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tytul</th>
+            <th scope="col">Podtytul</th>
+            <th scope="col">Rok wydania</th>
+            <th scope="col">Ilosc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.tytul</td>
+                <td>@book.tytul2</td>
+                <td>@book.rok_wydania</td>
+                <td>@book.stawka</td>  
+                
+                    @if (book.stawka > 0)
+                    {
+
+                        Html.BeginForm("RentBook", "Rent", new { card = Model.User.nr_karty, bookId = book.ksiazka_id});
+                        {
+                            <td>                                
+                                <button type="submit" class="btn btn-default">Wypozycz</button>
+                            </td>
+                        }
+                        
+                    }
+                    else
+                    {
+                       <td><a href="#"><button class="btn btn-default">Egzemplarze wypozyczone</button></a></td>
+                    }
+                
+            </tr>
+            
+        }
+    </tbody>
+</table>

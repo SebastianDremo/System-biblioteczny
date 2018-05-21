@@ -268,7 +268,6 @@
     <Content Include="Views\Login\ErrorLogin.cshtml" />
     <Content Include="Views\Login\AdminView.cshtml" />
     <Content Include="Views\Rent\ListOfBooks.cshtml" />
-    <Content Include="Views\Shared\BooksPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

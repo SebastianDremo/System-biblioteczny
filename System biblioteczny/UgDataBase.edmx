@@ -516,7 +516,7 @@
           </Key>
           <Property Name="zamowienie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="pracownik_id" Type="Int32" Nullable="false" />
+          <Property Name="pracownik_id" Nullable="false" Type="Int32" />
           <Property Name="nr_karty" Type="Int32" Nullable="false" />
           <Property Name="ksiazka_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ksiazki" Relationship="Self.Zamowienia_fk2" FromRole="Zamowienia" ToRole="Ksiazki" />

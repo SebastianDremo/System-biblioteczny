@@ -27,9 +27,9 @@ namespace System_biblioteczny.Controllers
                     nr_karty = login.nr_karty
                 };
 
-                Uzytkownicy user = context.Uzytkownicy.Where(u => u.nr_karty == login.nr_karty).FirstOrDefault();
+                Uzytkownicy user = context.Uzytkownicy.Where(u => u.nr_karty == login.nr_karty).FirstOrDefault();               
 
-                context.WejsciaOnline.Add(time);
+                context.WejsciaOnline.Add(time);               
                 context.SaveChanges();
 
                 return View("Logged", user);
