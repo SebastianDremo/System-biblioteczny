@@ -28,7 +28,6 @@
         <AssociationConnector Association="durbaezgomezModel.PracownicyDetails_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="durbaezgomezModel.Urlopy_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="durbaezgomezModel.Wypozyczenia_fk2" ManuallyRouted="false" />
-        <AssociationConnector Association="durbaezgomezModel.Zamowienia_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="durbaezgomezModel.WejsciaOnline_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="durbaezgomezModel.Wypozyczenia_fk1" ManuallyRouted="false" />
         <AssociationConnector Association="durbaezgomezModel.Zamowienia_fk1" ManuallyRouted="false" />

@@ -21,7 +21,6 @@ namespace System_biblioteczny
             this.GodzinyPracy1 = new HashSet<GodzinyPracy>();
             this.Urlopy = new HashSet<Urlopy>();
             this.Wypozyczenia = new HashSet<Wypozyczenia>();
-            this.Zamowienia = new HashSet<Zamowienia>();
         }
     
         public int pracownik_id { get; set; }
@@ -37,7 +36,5 @@ namespace System_biblioteczny
         public virtual ICollection<Urlopy> Urlopy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypozyczenia> Wypozyczenia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zamowienia> Zamowienia { get; set; }
     }
 }

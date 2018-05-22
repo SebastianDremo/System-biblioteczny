@@ -33,7 +33,7 @@ namespace System_biblioteczny.Controllers
 
             context.Zamowienia.Add(order);
             context.SaveChanges();
-            //Problem with foreign key - pracownik_id - drop it somehow
+            
         }
     }    
 }

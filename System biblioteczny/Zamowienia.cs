@@ -16,12 +16,10 @@ namespace System_biblioteczny
     {
         public int zamowienie_id { get; set; }
         public System.DateTime data { get; set; }
-        public int pracownik_id { get; set; }
         public int nr_karty { get; set; }
         public int ksiazka_id { get; set; }
     
         public virtual Ksiazki Ksiazki { get; set; }
-        public virtual Pracownicy Pracownicy { get; set; }
         public virtual Uzytkownicy Uzytkownicy { get; set; }
     }
 }

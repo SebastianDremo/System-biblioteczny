@@ -116,7 +116,6 @@
           </Key>
           <Property Name="zamowienie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="data" Type="date" Nullable="false" />
-          <Property Name="pracownik_id" Type="int" Nullable="false" />
           <Property Name="nr_karty" Type="int" Nullable="false" />
           <Property Name="ksiazka_id" Type="int" Nullable="false" />
         </EntityType>
@@ -264,18 +263,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Zamowienia_fk0">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
-          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="pracownik_id" />
-            </Principal>
-            <Dependent Role="Zamowienia">
-              <PropertyRef Name="pracownik_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Zamowienia_fk1">
           <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
           <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
@@ -361,10 +348,6 @@
             <End Role="Pracownicy" EntitySet="Pracownicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
-          <AssociationSet Name="Zamowienia_fk0" Association="Self.Zamowienia_fk0">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="Zamowienia" EntitySet="Zamowienia" />
-          </AssociationSet>
           <AssociationSet Name="Zamowienia_fk1" Association="Self.Zamowienia_fk1">
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
             <End Role="Zamowienia" EntitySet="Zamowienia" />
@@ -447,7 +430,6 @@
           <NavigationProperty Name="PracownicyDetails" Relationship="Self.PracownicyDetails_fk0" FromRole="Pracownicy" ToRole="PracownicyDetails" />
           <NavigationProperty Name="Urlopy" Relationship="Self.Urlopy_fk0" FromRole="Pracownicy" ToRole="Urlopy" />
           <NavigationProperty Name="Wypozyczenia" Relationship="Self.Wypozyczenia_fk2" FromRole="Pracownicy" ToRole="Wypozyczenia" />
-          <NavigationProperty Name="Zamowienia" Relationship="Self.Zamowienia_fk0" FromRole="Pracownicy" ToRole="Zamowienia" />
         </EntityType>
         <EntityType Name="PracownicyDetails">
           <Key>
@@ -516,11 +498,9 @@
           </Key>
           <Property Name="zamowienie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="pracownik_id" Nullable="false" Type="Int32" />
           <Property Name="nr_karty" Type="Int32" Nullable="false" />
           <Property Name="ksiazka_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ksiazki" Relationship="Self.Zamowienia_fk2" FromRole="Zamowienia" ToRole="Ksiazki" />
-          <NavigationProperty Name="Pracownicy" Relationship="Self.Zamowienia_fk0" FromRole="Zamowienia" ToRole="Pracownicy" />
           <NavigationProperty Name="Uzytkownicy" Relationship="Self.Zamowienia_fk1" FromRole="Zamowienia" ToRole="Uzytkownicy" />
         </EntityType>
         <Association Name="Autorzy_fk0">
@@ -655,18 +635,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Zamowienia_fk0">
-          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
-          <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pracownicy">
-              <PropertyRef Name="pracownik_id" />
-            </Principal>
-            <Dependent Role="Zamowienia">
-              <PropertyRef Name="pracownik_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="WejsciaOnline_fk0">
           <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
           <End Role="WejsciaOnline" Type="Self.WejsciaOnline" Multiplicity="*" />
@@ -759,10 +727,6 @@
           <AssociationSet Name="Wypozyczenia_fk2" Association="Self.Wypozyczenia_fk2">
             <End Role="Pracownicy" EntitySet="Pracownicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
-          </AssociationSet>
-          <AssociationSet Name="Zamowienia_fk0" Association="Self.Zamowienia_fk0">
-            <End Role="Pracownicy" EntitySet="Pracownicy" />
-            <End Role="Zamowienia" EntitySet="Zamowienia" />
           </AssociationSet>
           <AssociationSet Name="WejsciaOnline_fk0" Association="Self.WejsciaOnline_fk0">
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
@@ -904,7 +868,6 @@
               <MappingFragment StoreEntitySet="Zamowienia">
                 <ScalarProperty Name="zamowienie_id" ColumnName="zamowienie_id" />
                 <ScalarProperty Name="data" ColumnName="data" />
-                <ScalarProperty Name="pracownik_id" ColumnName="pracownik_id" />
                 <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
                 <ScalarProperty Name="ksiazka_id" ColumnName="ksiazka_id" />
               </MappingFragment>
