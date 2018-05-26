@@ -9,7 +9,7 @@
 
 
 
-<table class="table">
+<table id="books" class="table">
     <thead>
         <tr>
             <th scope="col">Tytul</th>
@@ -22,29 +22,43 @@
         @foreach (var book in Model.Books)
         {
             <tr>
+                <td>@book.ksiazka_id</td>
                 <td>@book.tytul</td>
                 <td>@book.tytul2</td>
                 <td>@book.rok_wydania</td>
-                <td>@book.stawka</td>  
-                
-                    @if (book.stawka > 0)
-                    {
+                <td>@book.stawka</td>
 
-                        Html.BeginForm("RentBook", "Rent", new { card = Model.User.nr_karty, bookId = book.ksiazka_id});
-                        {
-                            <td>                                
-                                <button type="submit" class="btn btn-default">Wypozycz</button>
-                            </td>
-                        }
-                        
-                    }
-                    else
-                    {
-                       <td><a href="#"><button class="btn btn-default">Egzemplarze wypozyczone</button></a></td>
-                    }
-                
+                @if (book.stawka > 0)
+                {
+                    <td>
+                        <button data-book-id ="@book.ksiazka_id" class="btn btn-default rentBtn">Wypozycz</button>
+                    </td>
+
+
+                }
+                else
+                {
+                    <td><a href="#"><button  class="btn btn-default">Egzemplarze wypozyczone</button></a></td>
+                }
+
             </tr>
-            
+
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#books .rentBtn").on("click", function () {
+                var book = $(this);
+                if (confirm("Potwierdz wypozyczenie ksiazki.")) {
+                    $.ajax({
+                        url: "/Rent/RentBook/?card=" + @Model.User.nr_karty + "&bookId=" + book.attr("data-book-id"),
+                        type: 'POST'
+                    });
+                }
+            });
+        });
+    </script>
+}
