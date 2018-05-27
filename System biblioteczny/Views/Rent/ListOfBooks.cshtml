@@ -21,12 +21,11 @@
     <tbody>
         @foreach (var book in Model.Books)
         {
-            <tr>
-                <td>@book.ksiazka_id</td>
+            <tr>                
                 <td>@book.tytul</td>
                 <td>@book.tytul2</td>
                 <td>@book.rok_wydania</td>
-                <td>@book.stawka</td>
+                <td id="quantity">@book.stawka</td>
 
                 @if (book.stawka > 0)
                 {
@@ -55,7 +54,10 @@
                 if (confirm("Potwierdz wypozyczenie ksiazki.")) {
                     $.ajax({
                         url: "/Rent/RentBook/?card=" + @Model.User.nr_karty + "&bookId=" + book.attr("data-book-id"),
-                        type: 'POST'
+                        type: 'POST',     
+                        success: function () {
+                            location.reload();                            
+                        }
                     });
                 }
             });

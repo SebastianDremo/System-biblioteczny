@@ -22,7 +22,7 @@ namespace System_biblioteczny.Controllers
         [HttpPost]
         public void RentBook(int card, int bookId)
         {
-            var context = new durbaezgomezEntities1();       
+            var context = new durbaezgomezEntities1();
 
             var order = new Zamowienia()
             {
@@ -31,6 +31,9 @@ namespace System_biblioteczny.Controllers
                 ksiazka_id = bookId
             };
 
+            var book = context.Ksiazki.First(b => b.ksiazka_id == bookId);
+            book.stawka--;
+            
             context.Zamowienia.Add(order);
             context.SaveChanges();
             
