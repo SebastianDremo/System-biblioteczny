@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System_biblioteczny.Models;
 
 namespace System_biblioteczny.Controllers
 {
@@ -36,7 +37,12 @@ namespace System_biblioteczny.Controllers
             }
             else if (context.Pracownicy.Any(p => p.pracownik_id == login.nr_karty && p.nazwisko == login.haslo))
             {
-                return View("AdminView");
+                var worker = context.Pracownicy.Where(p => p.pracownik_id == login.nr_karty).First();
+                var orders = context.Zamowienia.ToList();
+
+                AdminViewModel model = new AdminViewModel(worker, orders);
+
+                return View("~/Views/Admin/AdminView.cshtml", model);
             }
             else
                 return View("ErrorLogin");

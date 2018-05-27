@@ -1,0 +1,54 @@
+﻿@model System_biblioteczny.Models.AdminViewModel
+@{
+    ViewBag.Title = "AdminView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin - @Model.worker.pracownik_id</h2>
+
+<h3>Lista zamowionych ksiazek</h3>
+
+<table id="books" class="table">
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Nr karty</th>
+            <th scope="col">Id Ksiazki</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.orders)
+        {
+        <tr>
+            <td>@order.data</td>
+            <td>@order.nr_karty</td>
+            <td>@order.ksiazka_id</td>
+            <td><button id="orderBtn" data-order-date="@order.data" data-card-number="@order.nr_karty" data-book-number="@order.ksiazka_id" class="btn btn-default">Wypozycz</button></td>
+        </tr>
+         }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#orderBtn").on("click", function () {
+                var btn = $(this);
+                if (confirm("Potwierdz wypozyczenie ksiazki.")) {
+                    $.ajax({
+                        url: "/Admin/Rent",
+                        data: {
+                            "bookId": btn.attr("data-book-number"),
+                            "cardId": btn.attr("data-card-number"),
+                            "workerId": @Model.worker.pracownik_id.ToString()
+                        },
+                        type: "POST",
+                        success: function () {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

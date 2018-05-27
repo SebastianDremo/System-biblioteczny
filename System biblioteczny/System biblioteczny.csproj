@@ -153,6 +153,7 @@
     <Compile Include="Autorzy.cs">
       <DependentUpon>UgDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,7 @@
     <Compile Include="Loginy.cs">
       <DependentUpon>UgDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\RentBookViewModel.cs" />
     <Compile Include="Pracownicy.cs">
       <DependentUpon>UgDataBase.tt</DependentUpon>
@@ -267,8 +269,9 @@
     </Content>
     <Content Include="Views\Login\Logged.cshtml" />
     <Content Include="Views\Login\ErrorLogin.cshtml" />
-    <Content Include="Views\Login\AdminView.cshtml" />
+    <Content Include="Views\Admin\AdminView.cshtml" />
     <Content Include="Views\Rent\ListOfBooks.cshtml" />
+    <Content Include="Views\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
